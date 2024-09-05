@@ -1,7 +1,7 @@
 <script setup>
+import EducationIcon from '@/components/Ux/icons/EducationIcon.vue';
+import ExperienceIcon from '@/components/Ux/icons/ExperienceIcon.vue';
 import { format } from 'date-fns';
-import EducationIcon from '@/components/Ux/icons/EducationIcon.vue'
-import ExperienceIcon from '@/components/Ux/icons/ExperienceIcon.vue'
 
 const dateString = format(new Date(), 'MMMM do');
 
@@ -10,7 +10,7 @@ const dateString = format(new Date(), 'MMMM do');
 <template>
 
 
-  <div class="home min-h-100vh  ml-5vw bg-white dark:bg-black">
+  <div class="home min-h-100vh  ml-5vw ">
     <div class="text-2xl px-10 pt-10 text-indigo-600 text-right animate__animated animate__bounceIn">
 
       <h2>{{ dateString }}</h2>

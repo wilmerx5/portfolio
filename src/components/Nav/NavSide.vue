@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useNavStore } from '@/stores/Nav';
-
+import { RouterLink } from 'vue-router';
 import BarsIcons from '../Ux/icons/BarsIcons.vue';
 import CloseIcon from '../Ux/icons/CloseIcon.vue';
 import Mask from '../Ux/Mask.vue';
@@ -27,9 +27,11 @@ const navStore = useNavStore()
 
     <div class="flex-1 flex flex-col items-center justify-center text-white uppercase text-1xl gap-3">
 
-      <h2>About Me</h2>
-      <h2>Projects</h2>
-      <h2>Contact me</h2>
+      <RouterLink :to="{name:'projects'}" @click="navStore.handleShowNav"> <h2>About Me</h2></RouterLink>
+
+      <RouterLink :to="{name:'projects'}">  <h2>Projects</h2> </RouterLink>
+    <RouterLink :to="{name:'projects'}"> <h2>Contact me</h2></RouterLink>
+      
  
     </div>
 

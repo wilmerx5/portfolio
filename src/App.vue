@@ -11,7 +11,7 @@ const navStore = useNavStore()
 <template>
   <div :class="{'dark':navStore.darkMode}">
     <NavSide></NavSide>
-    <RouterView class="min-h-100vh"  />
+    <RouterView class="min-h-100vh  bg-white dark:bg-black"  />
   </div>
 
 
