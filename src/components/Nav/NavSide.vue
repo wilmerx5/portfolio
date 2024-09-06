@@ -27,7 +27,7 @@ const navStore = useNavStore()
 
     <div class="flex-1 flex flex-col items-center justify-center text-white uppercase text-1xl gap-3">
 
-      <RouterLink :to="{name:'projects'}" @click="navStore.handleShowNav"> <h2>About Me</h2></RouterLink>
+      <RouterLink :to="{name:'home'}" @click="navStore.handleShowNav"> <h2>About Me</h2></RouterLink>
 
       <RouterLink :to="{name:'projects'}">  <h2>Projects</h2> </RouterLink>
     <RouterLink :to="{name:'projects'}"> <h2>Contact me</h2></RouterLink>

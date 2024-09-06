@@ -3,7 +3,7 @@ import { ref } from "vue";
 
 export const useProjectsStore = defineStore('projects',()=>{
 
-    const showingProject = ref('/images/guitar_bg.png')
+    const showingProject = ref('')
     return{
         showingProject
         
