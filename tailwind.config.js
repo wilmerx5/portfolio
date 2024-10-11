@@ -23,6 +23,8 @@ export default {
         "30vw":"30vw",
         "50vw":"50vw",
         "60vw":"60vw",
+        "80vw":"80vw",
+
         "30vw":"30vw",
         "30vw":"30vw",
 

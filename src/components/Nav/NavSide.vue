@@ -9,15 +9,15 @@ const navStore = useNavStore()
 </script>
 
 <template>
-  <div class="fixed top-0 left-0 h-full w-5vw bg-indigo-900 flex flex-col justify-center items-center">
+  <div class="fixed top-0 left-0 h-full w-10vw md:w-5vw bg-indigo-900 flex flex-col justify-center items-center">
     <BarsIcons @click="navStore.handleShowNav()" />
   </div>
 
   <Mask v-if="navStore.showNav" @click="navStore.handleShowNav" />
   
-  <div class="fixed top-0 h-full w-30vw bg-indigo-900 flex justify-between z-20" :class="{
+  <div class="fixed top-0 h-full w-80vw md:w-30vw bg-indigo-900 flex justify-between z-20" :class="{
     'left-0 animate__fadeInLeft animate__animated': navStore.showNav,
-    'hideNav': !navStore.showNav
+    'hideNav ': !navStore.showNav
   }">
     <ToggleDarkMode class="absolute right-0" @click="navStore.handleTheme()" />
 
@@ -49,7 +49,7 @@ const navStore = useNavStore()
 
 <style scoped>
 .hideNav {
-  transition: left 1s;
-  left: -30vw;
+  transition: left 1.5s;
+  left: -100vw;
 }
 </style>

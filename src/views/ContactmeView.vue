@@ -29,13 +29,13 @@ import WhatsIcon from '@/components/Icons/WhatsIcon.vue';
             <!-- GitHub -->
             <a href="https://github.com/wilmerx5" target="_blank" class="flex items-center p-4 bg-gray-800 text-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
                 <GitHubIcon class="h-8 w-8 mr-2" />
-                <span>GitHub Profile</span>
+                <span>@Wilmerx5</span>
             </a>
 
             <!-- WhatsApp -->
             <a href="https://wa.me/573124547085" target="_blank" class="flex items-center p-4 bg-green-500 text-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
                 <WhatsIcon class="h-8 w-8 mr-2" />
-                <span>WhatsApp Me</span>
+                <span>+57 3124547085</span>
             </a>
         </div>
 

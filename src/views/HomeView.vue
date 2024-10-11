@@ -10,7 +10,14 @@ const timelineItems = [
   { title: "Software Programming Technician - SENA", date: "2020-2022", description: "Hands-on experience in programming and software development." },
   { title: "Vue.js - Udemy", date: "40 hours", description: "In-depth knowledge of building front-end applications with Vue.js." },
   { title: "Spring Boot - Udemy", date: "32 hours", description: "Experience building back-end applications with Spring Boot." },
-  { title: "Express.js - Udemy", date: "25 hours", description: "Mastering server-side development with Node.js and Express." },
+  { title: "Express.j s - Udemy", date: "25 hours", description: "Mastering server-side development with Node.js and Express." },
+  { title: "Java General - Udemy", date: "80 hours", description: "Comprehensive course covering the fundamentals of Java programming, object-oriented principles, and best practices for building robust applications." },
+{ title: "Git Hub- Udemy", date: "20 hours", description: "In-depth training on version control using Git and GitHub, focusing on collaboration, branching, merging, and managing repositories effectively." },
+{ title: "Docker- Udemy", date: "20 hours", description: "Learn to containerize applications with Docker, including creating Docker images, managing containers, and orchestrating multi-container setups." },
+{ title: "AWS- Udemy", date: "45 hours", description: "Explore Amazon Web Services (AWS) and its cloud solutions, covering deployment, scalability, and security best practices for modern cloud architectures." }
+
+
+
 ]
 
 function toggleCard(index) {
