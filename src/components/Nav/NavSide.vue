@@ -23,20 +23,20 @@ const navStore = useNavStore()
 
     <div class="flex-1 flex flex-col items-center justify-center text-white uppercase text-2xl font-semibold gap-3">
       <RouterLink 
-      active-class="text-orange-600"
+      active-class="text-emerald-400 "
       :to="{name:'home'}" @click="navStore.handleShowNav">
         <h2 class="hover:text-emerald-400 transition-colors duration-300">About Me</h2>
       </RouterLink>
 
       <RouterLink 
-        active-class="text-orange-600"
+        active-class="text-emerald-400 "
       :to="{name:'projects'}" @click="navStore.handleShowNav">
         <h2 class="hover:text-emerald-400 transition-colors duration-300">Projects</h2>
       </RouterLink>
 
       <RouterLink
-        active-class="text-orange-600"
-      :to="{name:'projects'}" @click="navStore.handleShowNav">
+        active-class="text-emerald-400 "
+      :to="{name:'contact'}" @click="navStore.handleShowNav">
         <h2 class="hover:text-emerald-400 transition-colors duration-300">Contact Me</h2>
       </RouterLink>
     </div>
