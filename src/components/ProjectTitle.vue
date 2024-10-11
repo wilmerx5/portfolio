@@ -28,16 +28,14 @@ const handleMouseLeave = () => {
 };
 </script>
 
+
 <template>
-    <div class="pl-6 " @mouseenter="handleMouseEnter" @mouseleave="handleMouseLeave">
-
-        <a :href="url" target="_blank" rel="noopener noreferrer">
-            <h3 class="
-    text-emerald-600 dark:text-white text-4xl font-extrabold italic flex py-2 border-solid border-2 pl-4 dark:border-white border-indigo-600 border-l-0 border-r-0 border-t-0">
-                <slot></slot>
-            </h3>
-
-        </a>
+    <div class="pl-6 group transition-all duration-300" @mouseenter="handleMouseEnter" @mouseleave="handleMouseLeave">
+      <a :href="url" target="_blank" rel="noopener noreferrer">
+        <h3 class="text-gray-800 dark:text-gray-300 text-3xl font-semibold group-hover:text-teal-500 transition-colors duration-300">
+          <slot></slot>
+        </h3>
+        <div class="mt-2 h-1 w-0 group-hover:w-full bg-teal-500 transition-all duration-300"></div>
+      </a>
     </div>
-
-</template>
+  </template>

@@ -1,66 +1,80 @@
 <script setup>
-import EducationIcon from '@/components/Ux/icons/EducationIcon.vue';
-import ExperienceIcon from '@/components/Ux/icons/ExperienceIcon.vue';
 import { format } from 'date-fns';
+import { ref } from 'vue';
 
 const dateString = format(new Date(), 'MMMM do');
 
+const activeCard = ref(null)
+const timelineItems = [
+  { title: "Software Engineering - Fundacion Universitaria del Area Andina", date: "2021-2025", description: "Focused on full stack development and modern web technologies." },
+  { title: "Software Programming Technician - SENA", date: "2020-2022", description: "Hands-on experience in programming and software development." },
+  { title: "Vue.js - Udemy", date: "40 hours", description: "In-depth knowledge of building front-end applications with Vue.js." },
+  { title: "Spring Boot - Udemy", date: "32 hours", description: "Experience building back-end applications with Spring Boot." },
+  { title: "Express.js - Udemy", date: "25 hours", description: "Mastering server-side development with Node.js and Express." },
+]
 
+function toggleCard(index) {
+  // Toggle the active card
+  activeCard.value = activeCard.value === index ? null : index;
+}
 </script>
 <template>
-
-
-  <div class="home min-h-100vh  ml-5vw ">
-    <div class="text-2xl px-10 pt-10 text-indigo-600 text-right animate__animated animate__bounceIn">
-
-      <h2>{{ dateString }}</h2>
-
-      <h3 class="text-2xl text-emerald-500 dark:text-white">Available to work </h3>
+  <div class="home min-h-screen bg-white dark:bg-gray-950">
+    <!-- Header Section -->
+    <div class="flex justify-between items-center px-10 py-5 pl-20 bg-gray-100 dark:bg-gray-800 shadow-md">
+      <h2 class="text-2xl font-semibold text-indigo-600 dark:text-indigo-400">{{ dateString }}</h2>
+      <h3 class="text-xl text-emerald-500 dark:text-emerald-400">Available to work</h3>
     </div>
-    <h3 class=" pt-20 text-5xl font-extrabold text-indigo-600 text-center animate__animated animate__zoomInUp">
-      Hello! My name is <span class="text-black dark:text-slate-200 ">WILMER</span>
-    </h3>
-    <p class=" pt-5 text-slate-800 dark:text-slate-200 text-2xl text-center animate__animated  animate__slideInLeft">
-      Full stack developer</p>
 
+    <!-- Main Greeting Section -->
+    <div class="text-center mt-16">
+      <h3 class="animate__animated animate__fadeInUp text-6xl font-bold text-indigo-600 dark:text-indigo-300">Hello! I'm
+        <span class="text-gray-900 dark:text-gray-200">WILMER</span></h3>
+      <p class="text-2xl mt-4 text-slate-800 dark:text-slate-300">Full Stack Developer</p>
+    </div>
 
-    <div class="pb-5 grid grid-cols-1 lg:grid-cols-2 w-2/3 gap-5 mx-auto dark:text-slate-300 text-slate-800 mt-20">
-      <div class="text-center">
-        <h3 class="text-3xl py-2 font-bold uppercase text-indigo-600 dark:text-white flex items-center justify-center gap-2 text-center"> Experience <ExperienceIcon/></h3>
+    <!-- Education and Experience Section -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 w-4/5 mx-auto mt-20">
+      <!-- Education Section -->
+      <div class="education-container">
+        <h3 class="text-3xl font-bold text-indigo-600 dark:text-indigo-300 mb-4">Education</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+          <div v-for="(item, index) in timelineItems" :key="index"
+            class="card bg-white dark:bg-gray-800 rounded-lg shadow-lg p-5 hover:shadow-2xl transition-shadow duration-300 cursor-pointer"
+            @click="toggleCard(index)">
+            <h4 class="text-xl font-bold text-indigo-600 dark:text-indigo-300">{{ item.title }}</h4>
+            <p class="text-sm text-slate-700 dark:text-slate-300">{{ item.date }}</p>
 
-        <div class="border-indigo-600  rounded-md border-2 p-2 h-60">
-          <p>I don't yet have professional work experience, but I have over five years of study in software development
-            and
-            have worked on several projects, including production-level applications for small businesses
-            , working with many technologies like, vue js, react js, spring-boot, mysql, mongo db, node js</p>
+            <!-- Expanding Content -->
+            <div v-if="activeCard === index" class="mt-3 text-slate-800 dark:text-slate-200">
+              <p class="text-base">{{ item.description }}</p>
+            </div>
+          </div>
         </div>
-
       </div>
-      <div class=" ">
-        <h3 class="py-2 text-3xl font-bold text-center uppercase text-indigo-600 dark:text-white flex gap-2 items-center justify-center"> Education <EducationIcon/> </h3>
-        <div class="p-2 border-solid border-2 border-indigo-600 rounded-md h-100">
-          <ol class="list-disc list-inside lowercase ">
-            <li>software engineering - FUNDACION UNIVERSITARIA DEL AREA ANDINA 2021-2025  </li>
-            <li>SOFTWARE PROGRAMMING TECHNICIAN - SENA 2020-2022</li>
-          </ol>
-          <h3 class="py-1 text-indigo-600  dark:text-emerald-400 font-bold uppercase text-1xl">Courses</h3>
-          <ol class="list-disc list-inside " >
-            <li>Vue Js - Udemy 40 hours</li>
-            <li>Spring-boot - Udemy 32 hours</li>
-            <li>Express - Udemy 25 hours</li>
-            <li>Java - Udemy 80 hours</li>
-            <li>Git Hub - Udemy 10 hours</li>
-            <li>Aws - Udemy 45 hours</li>
-            <li>Docker - Udemy 15 hours</li>
 
-
-
-          </ol>
-        </div>
-
+      <!-- Experience Section -->
+      <div class="experience-container">
+        <h3 class="text-3xl font-bold text-indigo-600 dark:text-indigo-300 mb-4">Experience</h3>
+        <p class="text-base text-slate-700 dark:text-slate-300 leading-relaxed">
+          I don't yet have professional experience, but I've been developing software for over five years. I’ve built
+          production-level applications and worked on several projects using technologies like Vue.js, React.js, Spring
+          Boot, MySQL, MongoDB, and Node.js.
+        </p>
       </div>
     </div>
 
+    <!-- Footer Section -->
+    <div class="py-8 text-center text-sm text-slate-600 dark:text-slate-400 mt-16">
+      <p>&copy; 2024 Wilmer - Full Stack Developer</p>
+    </div>
   </div>
 </template>
-<style></style>
+<style scoped>
+.card {
+  transition: transform 0.3s ease;
+}
+.card:hover {
+  transform: scale(1.05);
+}
+</style>
