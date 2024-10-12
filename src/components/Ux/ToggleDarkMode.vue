@@ -6,20 +6,27 @@ const navStore = useNavStore()
 </script>
 
 <template>
-    <div class="flex bg-yellow-100 dark:bg-black gap-5 mr-3 mt-2 p-1 py-2 rounded-lg items-center"    v-if="navStore.showNav">
-        <SunIcon  class="z-20"
-        :class="{'opacity-0':navStore.darkMode}"
-        />
-        <button
-     
-        class="opacity-100 mx-1 z-10 rounded-full w-6 h-6 absolute transition-left transition-right duration-500 bg-orange-400 dark:bg-blue-700" :class="{
-            'left-0': !navStore.darkMode,
-            'left-9': navStore.darkMode,
-        }"></button>
-        <MoonIcon class="z-20"
-                :class="{'opacity-0':!navStore.darkMode}"
-        />
+    <div class="absolute cursor-pointer flex bg-yellow-100 dark:bg-gray-800 gap-5 mr-3 mt-2 p-2 rounded-full items-center shadow-lg transition-all duration-500 ease-in-out w-20 h-10">
+      <!-- Sol -->
+      <SunIcon class="z-20 transition-opacity duration-500 cursor-pointer"
+        :class="{'opacity-0': navStore.darkMode, 'opacity-100': !navStore.darkMode}" 
+      />
+      
+      <!-- Botón -->
+      <button
+        class="absolute w-7 h-7 rounded-full bg-orange-400 dark:bg-blue-700 shadow-md transform transition-transform duration-500 ease-in-out" 
+        :class="{
+          'translate-x-0': !navStore.darkMode,
+          'translate-x-9': navStore.darkMode
+        }"
+        
+      ></button>
+  
+      <!-- Luna -->
+      <MoonIcon class="z-20 transition-opacity duration-500 cursor-pointer"
+        :class="{'opacity-0': !navStore.darkMode, 'opacity-100': navStore.darkMode}" 
+      />
     </div>
-</template>
-
+  </template>
+  
 <style scoped></style>
