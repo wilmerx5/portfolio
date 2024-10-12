@@ -17,7 +17,7 @@ import WhatsIcon from '@/components/Icons/WhatsIcon.vue';
             <!-- Email -->
             <a href="mailto:wilmercampos2004@gmail.com" class="flex items-center p-4 bg-red-600 text-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
                 <GmailIcon class="h-8 w-8 mr-2" />
-                <span>Send Email</span>
+                <span>wilmercampos2004@gmail.com</span>
             </a>
 
             <!-- LinkedIn -->
