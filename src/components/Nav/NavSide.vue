@@ -9,9 +9,12 @@ const navStore = useNavStore()
 </script>
 
 <template>
-  <div class="fixed top-0 left-0 h-full w-10vw md:w-5vw bg-indigo-900 flex flex-col justify-center items-center">
-    <BarsIcons @click="navStore.handleShowNav()" />
-  </div>
+<div
+  class="absolute mt-4 lg:mt-0 ml-3 lg:ml-0 lg:m-0 p-3 lg:p-0 rounded-full shadow-lg bg-gradient-to-r from-indigo-700 to-indigo-900 lg:rounded-none lg:fixed top-0 left-0 lg:h-full lg:w-5vw lg:bg-indigo-900 lg:flex flex-col justify-center items-center transition-all duration-300 transform hover:scale-110"
+>
+  <BarsIcons class="size-5 lg:size-6" @click="navStore.handleShowNav()" />
+</div>
+
 
   <Mask v-if="navStore.showNav" @click="navStore.handleShowNav" />
   

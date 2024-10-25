@@ -20,7 +20,7 @@ const projects = [{ name: "POS", url: "https://pos-practice-v1.vercel.app/", ima
 <template>
 
 
-    <div class="ml-[5vw] bg-gray-100 dark:bg-gray-900 min-h-screen py-10 font-poppins">
+    <div class="lg:ml-[5vw] bg-gray-100 dark:bg-gray-900 min-h-screen py-10 font-poppins">
         <h2 class="text-center dark:text-indigo-300 text-indigo-700 font-extrabold text-5xl uppercase mb-12">
             Projects
         </h2>

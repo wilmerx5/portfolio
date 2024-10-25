@@ -12,7 +12,7 @@ const navStore = useNavStore()
   <div :class="{'dark':navStore.darkMode}">
     
     <NavSide></NavSide>
-    <RouterView class="min-h-100vh  bg-white dark:bg-black ml-5vw"  />
+    <RouterView class="min-h-100vh  bg-white dark:bg-black lg:ml-5vw"  />
   </div>
 
 
