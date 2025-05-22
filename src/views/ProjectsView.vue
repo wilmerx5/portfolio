@@ -41,7 +41,7 @@ const collaboratedProjects = [
     <!-- Hero -->
     <section class="text-center py-16 px-4">
       <h1 class="text-4xl md:text-6xl font-extrabold mb-4">Hi, I'm Wilmer</h1>
-      <p class="text-xl max-w-xl mx-auto">Front-end developer passionate about crafting performant, responsive, and engaging websites. Let's build something amazing.</p>
+      <p class="text-xl max-w-xl mx-auto">Full Stack developer passionate about crafting performant, responsive, and engaging websites. Let's build something amazing.</p>
     </section>
 
     <!-- Featured Projects -->
