@@ -1,129 +1,223 @@
 <script setup>
-import { format } from 'date-fns';
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue'
 
-const dateString = format(new Date(), 'MMMM do');
+const today = new Date().toLocaleDateString('en-US', {
+  month: 'long',
+  day: 'numeric',
+})
 
-const activeCard = ref(null)
-const timelineItems = [
-  { title: "Software Engineering - Fundacion Universitaria del Area Andina", date: "2021-2025", description: "Focused on full stack development and modern web technologies." },
-  { title: "Software Programming Technician - SENA", date: "2020-2022", description: "Hands-on experience in programming and software development." },
-  { title: "Vue.js - Udemy", date: "40 hours", description: "In-depth knowledge of building front-end applications with Vue.js." },
-  { title: "Spring Boot - Udemy", date: "32 hours", description: "Experience building back-end applications with Spring Boot." },
-  { title: "Express.j s - Udemy", date: "25 hours", description: "Mastering server-side development with Node.js and Express." },
-  { title: "Java General - Udemy", date: "80 hours", description: "Comprehensive course covering the fundamentals of Java programming, object-oriented principles, and best practices for building robust applications." },
-  { title: "Git Hub- Udemy", date: "20 hours", description: "In-depth training on version control using Git and GitHub, focusing on collaboration, branching, merging, and managing repositories effectively." },
-  { title: "Docker- Udemy", date: "20 hours", description: "Learn to containerize applications with Docker, including creating Docker images, managing containers, and orchestrating multi-container setups." },
-  { title: "AWS- Udemy", date: "45 hours", description: "Explore Amazon Web Services (AWS) and its cloud solutions, covering deployment, scalability, and security best practices for modern cloud architectures." }
+const availabilityPulse = ref(false)
 
+onMounted(() => {
+  setInterval(() => {
+    availabilityPulse.value = !availabilityPulse.value
+  }, 1200)
+})
 
-
+const skills = [
+  {
+    title: 'Frontend',
+    description: 'Fast, accessible, and polished interfaces.',
+    items: ['Vue', 'React', 'Angular', 'Tailwind', 'Accessibility', 'Animations'],
+  },
+  {
+    title: 'Backend',
+    description: 'Robust APIs and scalable systems.',
+    items: ['Node (NestJS)', 'Spring Boot', 'REST', 'GraphQL'],
+  },
+  {
+    title: 'Cloud & DevOps',
+    description: 'Production-ready infrastructure.',
+    items: ['AWS', 'Docker', 'CI/CD', 'Linux'],
+  },
+  {
+    title: 'CMS & Marketing',
+    description: 'Conversion-focused web platforms.',
+    items: ['WordPress', 'Custom Themes', 'Plugins', 'SEO'],
+  },
 ]
-
-function toggleCard(index) {
-  // Toggle the active card
-  activeCard.value = activeCard.value === index ? null : index;
-}
 </script>
+
 <template>
-  <div class="home min-h-screen bg-white dark:bg-gray-950">
-    <!-- Header Section -->
-    <div class="flex justify-between items-center px-10 py-5 pl-20 bg-gray-100 dark:bg-gray-800 shadow-lg">
-      <h2 class="text-2xl font-semibold text-indigo-600 dark:text-indigo-400">{{ dateString }}</h2>
-      <h3 class="text-xl text-emerald-500 dark:text-emerald-400">Available to work</h3>
-    </div>
+  <main
+    class="overflow-hidden transition-colors
+           bg-slate-50 text-slate-900
+           dark:bg-slate-950 dark:text-white"
+  >
 
-    <!-- Main Greeting Section -->
-    <div class="text-center mt-16">
-      <h3 class="animate__animated animate__fadeInUp text-6xl font-bold text-indigo-600 dark:text-indigo-300">Hello! I'm
-        <span class="text-gray-900 dark:text-gray-200">WILMER</span>
-      </h3>
-      <p class="text-2xl mt-4 text-slate-800 dark:text-slate-300">Full Stack Developer</p>
-    </div>
+    <!-- TOP BAR -->
+    <header
+      class="fixed top-0 left-0 w-full z-50 backdrop-blur
+             bg-white/70 dark:bg-slate-950/70
+             border-b border-slate-200 dark:border-slate-800"
+    >
+      <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+        <span class="text-sm text-slate-600 dark:text-slate-400">
+          {{ today }}
+        </span>
 
-    <!-- Education and Experience Section -->
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 w-4/5 mx-auto mt-20">
-      <!-- Education Section -->
-      <div class="education-container">
-        <h3 class="text-3xl font-bold text-indigo-600 dark:text-indigo-300 mb-4">Education</h3>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-          <div v-for="(item, index) in timelineItems" :key="index"
-            class="card bg-white dark:bg-gray-800 rounded-lg shadow-lg p-5 hover:shadow-2xl transition-shadow duration-300 cursor-pointer"
-            @click="toggleCard(index)">
-            <h4 class="text-xl font-bold text-indigo-600 dark:text-indigo-300">{{ item.title }}</h4>
-            <p class="text-sm text-slate-700 dark:text-slate-300">{{ item.date }}</p>
-
-            <!-- Expanding Content -->
-            <div v-if="activeCard === index" class="mt-3 text-slate-800 dark:text-slate-200">
-              <p class="text-base">{{ item.description }}</p>
-            </div>
-          </div>
+        <div class="flex items-center gap-2 text-sm text-emerald-600 dark:text-emerald-400">
+          <span
+            class="w-2.5 h-2.5 rounded-full bg-emerald-500 transition-opacity"
+            :class="availabilityPulse ? 'opacity-100' : 'opacity-40'"
+          ></span>
+          Available to work
         </div>
       </div>
+    </header>
 
-      <!-- Experience Section -->
-      <div class="experience-container">
-        <h3 class="text-3xl font-bold text-indigo-600 dark:text-indigo-300 mb-4">Experience</h3>
+    <!-- HERO -->
+    <section
+      class="min-h-screen flex items-center justify-center pt-24
+             bg-gradient-to-br
+             from-slate-50 via-indigo-50 to-slate-100
+             dark:from-slate-950 dark:via-indigo-950 dark:to-slate-900"
+    >
+      <div class="max-w-4xl px-6 text-center">
+        <p class="text-xs tracking-[0.3em] text-indigo-600 dark:text-indigo-400 mb-6">
+          FULL STACK ENGINEER
+        </p>
 
-        <!-- Devs Valhalla Experience -->
-        <div class="mb-6">
-          <h4 class="text-xl font-semibold text-slate-800 dark:text-slate-200">Web Developer</h4>
-          <p class="text-sm text-slate-600 dark:text-slate-400">Devs Valhalla, Bogotá, D.C., Capital District, Colombia</p>
-          <p class="text-sm text-slate-600 dark:text-slate-400">April 2022 - April 2024</p>
-          <p class="text-base text-slate-700 dark:text-slate-300 leading-relaxed mt-2">
-            During this time, I worked as a freelance Web Developer, creating websites for clients and acquaintances. My
-            responsibilities included managing hosting services, file systems, and databases to ensure efficient
-            performance and scalability. I utilized technologies such as WordPress, jQuery, PHP, and Git for version control.
-            Currently, I am leading a rebuild of these projects with modern technologies like Vue.js for the frontend, 
-            Spring Boot for the backend, and AWS for cloud services. This experience has significantly enhanced my 
-            full-stack development skills and adaptability to the latest industry standards.
-          </p>
-        </div>
+        <h1 class="text-5xl md:text-6xl font-bold leading-tight">
+          I build and scale<br />
+          <span class="text-indigo-600 dark:text-indigo-400">
+            web products
+          </span><br />
+          that actually ship.
+        </h1>
 
-        <!-- Kodland Experience -->
-        <div>
-          <h4 class="text-xl font-semibold text-slate-800 dark:text-slate-200">Programming Tutor</h4>
-          <p class="text-sm text-slate-600 dark:text-slate-400">Kodland, Bogotá, D.C., Capital District, Colombia</p>
-          <p class="text-sm text-slate-600 dark:text-slate-400">August 2023 - April 2024</p>
-          <p class="text-base text-slate-700 dark:text-slate-300 leading-relaxed mt-2">
-            As a Programming Tutor, I mentored adolescents in web development, focusing on HTML, CSS, JavaScript, and
-            foundational frameworks. I guided students through hands-on projects, fostering creativity and problem-solving
-            skills while providing a solid foundation in front-end and back-end technologies. This role prepared them for
-            potential opportunities in tech, helping them gain essential skills for their future careers.
-          </p>
+        <p class="mt-8 text-lg text-slate-700 dark:text-slate-300 max-w-3xl mx-auto">
+          Product-focused Full Stack Engineer with 6+ years of experience delivering
+          production systems for U.S.-based clients.
+          I take ownership from UI details to backend architecture and cloud deployment.
+        </p>
+
+        <div class="mt-12 flex justify-center gap-6">
+          <RouterLink
+            to="/projects"
+            class="px-7 py-3 rounded-xl
+                   bg-indigo-600 text-white
+                   hover:bg-indigo-700 hover:-translate-y-0.5 transition-all"
+          >
+            View projects
+          </RouterLink>
+          <a
+            href="#contact"
+            class="px-7 py-3 rounded-xl
+                   border border-slate-300 dark:border-slate-600
+                   hover:border-indigo-500 hover:-translate-y-0.5 transition-all"
+          >
+            Contact me
+          </a>
         </div>
       </div>
-    </div>
+    </section>
 
-    <!-- Footer Section -->
-    <div class="py-8 text-center text-sm text-slate-600 dark:text-slate-400 mt-16">
-      <p>&copy; 2024 Wilmer - Full Stack Developer</p>
-    </div>
-  </div>
+    <!-- SKILLS -->
+    <section class="py-24 px-6 max-w-6xl mx-auto">
+      <h2 class="text-3xl font-bold mb-14 text-center">
+        What I do
+      </h2>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div
+          v-for="(skill, i) in skills"
+          :key="i"
+          class="group rounded-2xl p-6 transition-all
+                 bg-white border border-slate-200
+                 dark:bg-slate-900/70 dark:border-slate-800
+                 hover:border-indigo-500 hover:-translate-y-1"
+        >
+          <h3 class="text-xl font-semibold text-indigo-600 dark:text-indigo-400 mb-2">
+            {{ skill.title }}
+          </h3>
+
+          <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">
+            {{ skill.description }}
+          </p>
+
+          <ul class="space-y-1 text-slate-700 dark:text-slate-300 text-sm">
+            <li
+              v-for="item in skill.items"
+              :key="item"
+              class="group-hover:translate-x-1 transition-transform"
+            >
+              → {{ item }}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section class="py-24 px-6 max-w-4xl mx-auto">
+      <h2 class="text-3xl font-bold mb-14">
+        Experience
+      </h2>
+
+      <div class="space-y-14">
+        <div class="group">
+          <h3 class="text-xl font-semibold group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition">
+            Web Developer — AlterEgo Marketing
+          </h3>
+          <p class="text-sm text-slate-600 dark:text-slate-400">
+            Aug 2025 – Present · Contract · Remote (US)
+          </p>
+          <ul class="mt-5 space-y-2 text-slate-700 dark:text-slate-300">
+            <li>→ Built high-performing marketing platforms for U.S. clients</li>
+            <li>→ Developed custom WordPress themes and reusable components</li>
+            <li>→ Integrated AWS services for scalability and reliability</li>
+            <li>→ Focused on SEO, accessibility, and conversion performance</li>
+          </ul>
+        </div>
+
+        <div class="group">
+          <h3 class="text-xl font-semibold group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition">
+            Web Developer — Vinali Group
+          </h3>
+          <p class="text-sm text-slate-600 dark:text-slate-400">
+            Dec 2024 – Oct 2025 · Contract · Remote
+          </p>
+          <ul class="mt-5 space-y-2 text-slate-700 dark:text-slate-300">
+            <li>→ Built custom WordPress websites and internal tools</li>
+            <li>→ Created plugins, APIs, and frontend applications</li>
+            <li>→ Managed AWS infrastructure and Docker deployments</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section
+      id="contact"
+      class="py-24 px-6 text-center
+             bg-gradient-to-t
+             from-indigo-50 to-slate-100
+             dark:from-indigo-950 dark:to-slate-950"
+    >
+      <h2 class="text-4xl font-bold">
+        Let’s build something meaningful.
+      </h2>
+
+      <p class="mt-5 text-slate-700 dark:text-slate-300 max-w-xl mx-auto">
+        If you need a developer who can take ownership,
+        move fast, and deliver production-ready solutions.
+      </p>
+
+      <a
+        href="mailto:wilmercampos2004@gmail.com"
+        class="inline-block mt-10 px-8 py-4 rounded-xl
+               bg-indigo-600 text-white
+               hover:bg-indigo-700 hover:-translate-y-0.5 transition-all"
+      >
+        Get in touch
+      </a>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-6 text-center text-sm text-slate-500 dark:text-slate-500">
+      © 2025 Wilmer Campos — Full Stack Engineer
+    </footer>
+
+  </main>
 </template>
-
-<style scoped>
-.card {
-  transition: transform 0.3s ease;
-}
-
-.card:hover {
-  transform: scale(1.05);
-}
-
-.education-container,
-.experience-container {
-  padding: 20px;
-}
-
-.education-container h3,
-.experience-container h3 {
-  margin-bottom: 20px;
-}
-
-@media (min-width: 768px) {
-  .card {
-    padding: 30px;
-  }
-}
-</style>
